@@ -1,0 +1,75 @@
+---
+title: React Atomic Design with a Twist
+auhor: Joshua Ryland
+data: 10-11-2023
+tags: ['React','Architecture','Atomic Design', 'Frontend']
+---
+
+## What is Atomic Design?
+
+Atomic design is one way of architecting and structuring your React projects. It ideally can be used for enterprise to personal blog level. The standard version is touted by Brad Frost [Atomic Design]('https://atomicdesign.bradfrost.com/chapter-2/').
+
+A TLDR perspective on this is that you will have pages, templates, organisms, molecules and atoms. Pages have the basic structure/website layout, they will not feature to much component wise. Templates are more of the structure of a page and feature organisms. Organisms are large components/features that contain molecules and atoms. Molecules are smaller components that only contain atoms. Then atoms are small components, that usually are pure in functionality, and import very little and often are devoid of business logic.
+
+In fact business logic is ideally handled as high up as possible. This is a very TLDR take of Atomic Design, but you get the jist. 
+
+## Atomic Design with a Twist
+
+Clean Architecture meets Atomic Design with a personal twist. I have found that there are a myriad of design ideas both structurally and/or architectural with React projects. But what I will discuss has been my solution for projects of all sizes that is relatively easy to use across frameworks.
+
+Here is the basic layout, the idea is that with a bit of knowledge around Atomic Design that from there it is pretty self explanatory.
+
+``` javascript
+# Root
+src/
+    features/
+        [feature]/
+            [template].tsx
+            [template].props.tsx
+            [organisms]
+            [molecules]
+            [atoms]
+    ui/
+        [organisms]
+            layout.tsx
+        [molecules]
+        [atoms]
+    pages/
+        Home/
+            Home.tsx
+        Contact/
+            Contact.tsx
+    
+    infrastructure/
+        hooks/
+        contexts/
+        errors/
+        repositories/
+        router/
+        api/
+    utils/
+    core/
+        types/
+        enums/
+        models/
+        interfaces/
+        constants/
+```
+
+Below are the nitty gritty details around what goes where.
+
+### Features
+
+### Ui
+
+### Pages
+
+With inspiration taken from Nextjs (v13-14), these Pages folder will act as the URL structure for you website and your router will display these. Here for example you could have /home, /contact/ and /settings. Then if you were to have say user in settings that would be another folder within settings. so settings/user/user.tsx.
+
+Each .tsx and .jsx would just feature possibly very simple layout components but really should then just contain features.
+
+### Infrastructure
+
+### Utils
+
+### Core
